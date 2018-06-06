@@ -30,6 +30,7 @@ dataset_test['published'] = dataset_test['published'].apply(getYear)
 X=dataset.iloc[:, [2,3,4,5,6,7,8]].values
 Y=dataset.iloc[:, 1].values
 Z=dataset_test.iloc[:, [1,2,3,4,5,6,7]].values
+Id=dataset_test.iloc[:, [0]].values
 
 
 labelencoder_X = LabelEncoder()
@@ -55,6 +56,5 @@ regressor= RandomForestRegressor(n_estimators=400, max_depth=30,criterion='mse',
 regressor.fit(X, Y)
 regressor.score(X_train, Y_train)
 
-Z_pred= regressor.predict(Z)
-
-Z_pred.to_csv('out.csv', sep=',')
+Z_pred= regressor.predict(Z)    
+prediction = pd.DataFrame(Id, Z_pred, columns=['vid_id ad_views']).to_csv('prediction.csv')
