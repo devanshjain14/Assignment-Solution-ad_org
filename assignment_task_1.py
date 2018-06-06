@@ -56,5 +56,10 @@ regressor= RandomForestRegressor(n_estimators=400, max_depth=30,criterion='mse',
 regressor.fit(X, Y)
 regressor.score(X_train, Y_train)
 
-Z_pred= regressor.predict(Z)    
-prediction = pd.DataFrame(Id, Z_pred, columns=['vid_id ad_views']).to_csv('prediction.csv')
+Z_pred= regressor.predict(Z)
+prediction = pd.DataFrame(Id, Z_pred,  columns=['vid_id ad_views']).to_csv('prediction.csv')
+ 
+
+
+
+
